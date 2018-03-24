@@ -1,0 +1,3 @@
+ami_blockchain:
+    api_key: '%env(BLOCKCHAIN_API_KEY)%'
+    service_url: '%env(BLOCKCHAIN_SERVICE_URL)%'
