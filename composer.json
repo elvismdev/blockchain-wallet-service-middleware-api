@@ -8,7 +8,9 @@
     "authors": [
         {
             "name": "Elvis Morales",
-            "email": "yo@elvismdev.io"
+            "email": "yo@elvismdev.io",
+            "homepage": "https://elvismdev.io",
+            "role": "Developer"
         }
     ],
     "repositories": [
