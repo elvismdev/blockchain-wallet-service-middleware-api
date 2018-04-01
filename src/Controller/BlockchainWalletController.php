@@ -68,4 +68,14 @@ class BlockchainWalletController extends BlockchainBaseController
     {
         return new JsonResponse($this->blockchain->Wallet->archiveAddress($addr));
     }
+
+    /**
+     * Unarchive an address.
+     * @param string $addr
+     * @Route("/unarch_address/{addr}", name="wallet_unarch_address")
+     */
+    public function unarchAddress($addr)
+    {
+        return new JsonResponse($this->blockchain->Wallet->unarchiveAddress($addr));
+    }
 }
