@@ -32,6 +32,7 @@ class BlockchainWalletController extends BlockchainBaseController
 
     /**
      * Get single address balance.
+     * @param string $addr
      * @Route("/balance/{addr}", name="wallet_addr_balance")
      */
     public function addrBalance($addr)
@@ -40,11 +41,21 @@ class BlockchainWalletController extends BlockchainBaseController
     }
 
     /**
-     * Get wallet addresses.
+     * Get list of the active addresses within the wallet.
      * @Route("/addresses", name="wallet_addresses")
      */
     public function addresses()
     {
         return new JsonResponse($this->blockchain->Wallet->getAddresses());
+    }
+
+    /**
+     * Get a new Bitcoin address, with an optional label, less than 255 characters in length.
+     * @param string $label
+     * @Route("/new_address/{label}", name="wallet_new_address", defaults={"label"=null})
+     */
+    public function newAddress($label)
+    {
+        return new JsonResponse($this->blockchain->Wallet->getNewAddress($label));
     }
 }
