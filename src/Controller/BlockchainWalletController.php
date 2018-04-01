@@ -20,4 +20,13 @@ class BlockchainWalletController extends BlockchainBaseController
     {
         return new JsonResponse($this->blockchain->Wallet->getBalance());
     }
+
+    /**
+     * Get wallet ID.
+     * @Route("/id", name="wallet_id")
+     */
+    public function id()
+    {
+        return new JsonResponse($this->blockchain->Wallet->getIdentifier());
+    }
 }
