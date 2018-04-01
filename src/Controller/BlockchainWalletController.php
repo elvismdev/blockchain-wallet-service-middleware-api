@@ -58,4 +58,14 @@ class BlockchainWalletController extends BlockchainBaseController
     {
         return new JsonResponse($this->blockchain->Wallet->getNewAddress($label));
     }
+
+    /**
+     * Archives an address.
+     * @param string $addr
+     * @Route("/arch_address/{addr}", name="wallet_arch_address")
+     */
+    public function archAddress($addr)
+    {
+        return new JsonResponse($this->blockchain->Wallet->archiveAddress($addr));
+    }
 }
