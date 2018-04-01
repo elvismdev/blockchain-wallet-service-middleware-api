@@ -14,7 +14,7 @@ class BlockchainWalletController extends BlockchainBaseController
 
     /**
      * Get the balance of the whole wallet.
-     * @Route("/balance", name="balance")
+     * @Route("/balance", name="wallet_balance")
      */
     public function balance()
     {
