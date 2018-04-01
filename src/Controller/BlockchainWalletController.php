@@ -5,6 +5,7 @@ namespace App\Controller;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use App\Utils\DataCurator;
 
 /**
  * Wallet Management.
@@ -93,4 +94,22 @@ class BlockchainWalletController extends BlockchainBaseController
             $request->get('fee')
         ));
     }
+
+    /**
+     * Send a multi-recipient transaction to many addresses at once.
+     * @Route("/send_to_many", name="wallet_send_to_many", methods={"POST"})
+     */
+    public function sendToMany(Request $request)
+    {
+        $recipients = DataCurator::recipientsToArray(
+            $request->get('recipients')
+        );
+
+        return new JsonResponse($this->blockchain->Wallet->sendMany(
+            $recipients,
+            $request->get('from_address'), 
+            $request->get('fee')
+        ));
+    }
+
 }
