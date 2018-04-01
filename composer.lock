@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "637e6876c142f02e66ca2165111de9e2",
+    "content-hash": "d13dbdd644a542ccce55386af61a7825",
     "packages": [
         {
             "name": "aminin/blockchain-bundle",
-            "version": "dev-sf-v4-support",
+            "version": "v0.3.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/elvismdev/blockchain-bundle.git",
-                "reference": "6565edcab6afd25458eeab9c21a03627dabe8ada"
+                "url": "https://github.com/aminin/blockchain-bundle.git",
+                "reference": "7b9fb5f57cbef6e3073d767b8d4e2705e7a9cef8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/elvismdev/blockchain-bundle/zipball/6565edcab6afd25458eeab9c21a03627dabe8ada",
-                "reference": "6565edcab6afd25458eeab9c21a03627dabe8ada",
+                "url": "https://api.github.com/repos/aminin/blockchain-bundle/zipball/7b9fb5f57cbef6e3073d767b8d4e2705e7a9cef8",
+                "reference": "7b9fb5f57cbef6e3073d767b8d4e2705e7a9cef8",
                 "shasum": ""
             },
             "require": {
@@ -34,6 +34,7 @@
                     "Ami\\BlockchainBundle\\": ""
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -44,10 +45,7 @@
                 }
             ],
             "description": "Blockchain API integration for Symfony 2/3/4",
-            "support": {
-                "source": "https://github.com/elvismdev/blockchain-bundle/tree/sf-v4-support"
-            },
-            "time": "2018-03-26T05:01:27+00:00"
+            "time": "2018-03-27T15:05:33+00:00"
         },
         {
             "name": "blockchain/blockchain",
@@ -1446,16 +1444,16 @@
         },
         {
             "name": "symfony/flex",
-            "version": "v1.0.76",
+            "version": "v1.0.78",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/flex.git",
-                "reference": "202c981673b255a41bac4076cb82629a0b8481cb"
+                "reference": "eead30b31db70691cd1fd1e7225190c818a1a5f6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/flex/zipball/202c981673b255a41bac4076cb82629a0b8481cb",
-                "reference": "202c981673b255a41bac4076cb82629a0b8481cb",
+                "url": "https://api.github.com/repos/symfony/flex/zipball/eead30b31db70691cd1fd1e7225190c818a1a5f6",
+                "reference": "eead30b31db70691cd1fd1e7225190c818a1a5f6",
                 "shasum": ""
             },
             "require": {
@@ -1488,7 +1486,7 @@
                     "email": "fabien.potencier@gmail.com"
                 }
             ],
-            "time": "2018-03-23T16:30:50+00:00"
+            "time": "2018-03-27T10:04:58+00:00"
         },
         {
             "name": "symfony/framework-bundle",
@@ -3042,7 +3040,6 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "aminin/blockchain-bundle": 20,
         "symfony/lts": 20
     },
     "prefer-stable": false,
