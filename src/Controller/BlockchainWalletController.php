@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
 /**
@@ -77,5 +78,19 @@ class BlockchainWalletController extends BlockchainBaseController
     public function unarchAddress($addr)
     {
         return new JsonResponse($this->blockchain->Wallet->unarchiveAddress($addr));
+    }
+
+    /**
+     * Send Bitcoin to a single recipient address.
+     * @Route("/send", name="wallet_send", methods={"POST"})
+     */
+    public function send(Request $request)
+    {
+        return new JsonResponse($this->blockchain->Wallet->send(
+            $request->get('to_address'), 
+            $request->get('amount'), 
+            $request->get('from_address'), 
+            $request->get('fee')
+        ));
     }
 }
