@@ -31,11 +31,20 @@ class BlockchainWalletController extends BlockchainBaseController
     }
 
     /**
-     * Get address balance.
+     * Get single address balance.
      * @Route("/balance/{addr}", name="wallet_addr_balance")
      */
     public function addrBalance($addr)
     {
         return new JsonResponse($this->blockchain->Wallet->getAddressBalance($addr));
+    }
+
+    /**
+     * Get wallet addresses.
+     * @Route("/addresses", name="wallet_addresses")
+     */
+    public function addresses()
+    {
+        return new JsonResponse($this->blockchain->Wallet->getAddresses());
     }
 }
