@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use App\Utils\DataCurator;
@@ -10,6 +11,7 @@ use App\Utils\DataCurator;
 /**
  * Wallet Management.
  * @Route("/wallet")
+ * @IsGranted("IS_AUTHENTICATED_FULLY")
  */
 class BlockchainWalletController extends BlockchainBaseController
 {
