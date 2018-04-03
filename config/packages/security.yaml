@@ -1,7 +1,16 @@
 security:
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
+
+    encoders:
+        App\Entity\User:
+            algorithm: bcrypt
+
     providers:
-        in_memory: { memory: ~ }
+        user_db_provider:
+            entity:
+                class: App\Entity\User
+                property: username
+
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
@@ -19,6 +28,7 @@ security:
             pattern:  ^/login
             stateless: true
             anonymous: true
+            provider: user_db_provider
             form_login:
                 check_path:               /login_check
                 success_handler:          lexik_jwt_authentication.handler.authentication_success
@@ -27,6 +37,7 @@ security:
 
         main:
             pattern:   ^/
+            provider: user_db_provider
             stateless: true
             anonymous: true
             guard:
