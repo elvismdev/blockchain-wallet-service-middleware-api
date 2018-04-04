@@ -12,6 +12,7 @@ use App\Entity\User;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\Console\Question\Question;
 
 class BlockchainApiCreateUserCommand extends Command
 {
@@ -45,18 +46,31 @@ class BlockchainApiCreateUserCommand extends Command
     {
         $this
         ->setDescription('Adds an application user for JWT authentication.')
-        ->addArgument('username', InputArgument::REQUIRED, 'API Username')
-        ->addArgument('password', InputArgument::REQUIRED, 'API Password')
-        ->addArgument('appname', InputArgument::REQUIRED, 'Application Name')
+        // ->addArgument('username', InputArgument::REQUIRED, 'API Username')
+        // ->addArgument('password', InputArgument::REQUIRED, 'API Password')
+        // ->addArgument('appname', InputArgument::REQUIRED, 'Application Name')
         ;
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $io         = new SymfonyStyle($input, $output);
-        $username   = $input->getArgument('username');
-        $password   = $input->getArgument('password');
-        $appname    = $input->getArgument('appname');
+        $helper = $this->getHelper('question');
+        // $username   = $input->getArgument('username');
+        // $password   = $input->getArgument('password');
+        $question = new Question('Application Name: ');
+        $question->setValidator(function ($value) {
+            if (trim($value) == '') {
+                throw new \Exception('Application name cannot be empty');
+            }
+
+            return $value;
+        });
+        $appname = $helper->ask($input, $output, $question);
+
+        // $appname    = $input->getArgument('appname');
+        $username   = md5( $appname );
+        $password   = hash( 'sha256', $username . time() );
         
         // Check if user already exists in DB. If it doesn't, create new record.
         if ($user = $this->userManager->findOneByUsername($username)) {
@@ -72,7 +86,10 @@ class BlockchainApiCreateUserCommand extends Command
             // Record/update user in DB.
             $this->entityManager->flush();
 
-            $io->success('User ' . $user->getUsername() . ' successfully generated!');
+            $io->table(['API Username', 'API Password'], [[$username, $password]]);
+            $io->note('Keep in a safe place your credentials, you won\'t see them again.');
+            $io->success('API user successfully generated!');
+
         }
         
     }
